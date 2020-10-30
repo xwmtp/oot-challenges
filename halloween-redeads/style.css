@@ -1,0 +1,50 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+    overflow-y: scroll;
+}
+
+body {
+    height: 100%;
+    width: 100%;
+    background-color: black;
+    color: white;
+    font-family: "Roboto", sans-serif;
+}
+
+#halloween-img {
+    height: 800px;
+}
+
+#explanation {
+    display:block;
+    text-align: center;
+    width: 444px;
+    display: block;
+    margin: 10px 0px;
+}
+
+#redead-counter {
+    top: 297px;
+    left: 335px;;
+}
+
+#gibdo-counter {
+
+    top: 338px;
+    left: 335px;
+}
+
+.counter {
+    position: absolute;
+    font-size: 30px;
+    display: inline-block;
+    user-select: none;
+    cursor: pointer;
+    white-space: pre-wrap;
+}

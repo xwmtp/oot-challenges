@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <link rel="shortcut icon" type="image/x-icon" href="./img/favicon.ico">
+    <title>OoT Halloween challenge</title>
+</head>
+
+<body>
+    <div id='content'>
+        <img id='halloween-img' src="./img/halloween.png" />
+        <div id='explanation'>
+            Click the count to increase, right-click to decrease.
+        </div>
+    </div>
+    
+    <div id='redead-counter' class='counter'></div>
+    <div id='gibdo-counter' class='counter'></div>
+
+    <script>
+
+        const formatCounter = (count, total) => {
+            const whitespace = count < 10? '  ' : ''
+            return `${count}${whitespace} / ${total}`
+        }
+
+        const addCounter = (div, state) => {
+            const counterText = document.createTextNode(formatCounter(state['count'], state['total']));
+
+
+            div.addEventListener('click', e => {
+                e.stopPropagation();
+                if (state['count'] < state['total']) {
+                    state['count']++;
+                } else {
+                    state['count'] = 0;
+                }
+                counterText.textContent = formatCounter(state['count'], state['total']);
+            });
+
+            div.addEventListener('contextmenu', e => {
+                e.stopPropagation();
+                e.preventDefault();
+                if (state['count'] > 0) {
+                    state['count']--;
+                } else {
+                    state['count'] = state['total'];
+                }
+                counterText.textContent = formatCounter(state['count'], state['total']);
+            });
+
+            div.appendChild(counterText);
+        }
+
+        const redeadCounter = document.querySelector('#redead-counter')
+        const gibdoCounter = document.querySelector('#gibdo-counter')
+
+        addCounter(redeadCounter, {'count' : 0, 'total': 28})
+        addCounter(gibdoCounter,  {'count' : 0, 'total': 6})
+
+
+    </script>
+</body>
+
+</html>
